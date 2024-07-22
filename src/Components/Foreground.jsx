@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import Card from "./Card";
 
 const Foreground = () => {
-    
+  const containerRef = useRef(null);
+
   const data = [
     {
       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
@@ -23,14 +24,16 @@ const Foreground = () => {
       tag: { isOpen: false, tagTitle: "Download Now", tagColor: "green" },
     },
   ];
+
   return (
-    <>
-      <div className="fixed z-[3] w-full h-full flex gap-10 flex-wrap p-5">
-        {data.map((item, index) => (
-          <Card data={item} />
-        ))}
-      </div>
-    </>
+    <div
+      ref={containerRef}
+      className="fixed z-[3] w-full h-full flex gap-10 flex-wrap p-5 overflow-hidden"
+    >
+      {data.map((item, index) => (
+        <Card key={index} data={item} containerRef={containerRef} />
+      ))}
+    </div>
   );
 };
 
