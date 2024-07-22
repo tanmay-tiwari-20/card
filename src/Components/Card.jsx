@@ -17,6 +17,13 @@ const Card = ({ data, containerRef }) => {
       whileDrag={{ scale: 1.2 }}
       dragConstraints={containerRef}
       className="relative flex-shrink-0 w-60 h-[15rem] rounded-[40px] bg-zinc-900/90 text-white py-10 px-8 overflow-hidden"
+      initial={{ scale: 0.9 }}
+      animate={{ scale: 1 }}
+      transition={{
+        type: "spring",
+        stiffness: 300,
+        damping: 20,
+      }}
     >
       <FaFileAlt />
       <p className="text-sm leading-tight mt-5 font-semibold">{data.desc}</p>
